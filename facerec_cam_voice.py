@@ -91,6 +91,7 @@ while True:
 
                 # Or instead, use the known face with the smallest distance to the new face
                 face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                print(face_distances)
                 best_match_index = np.argmin(face_distances)
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
@@ -116,8 +117,8 @@ while True:
                 tts_d.speak(f'Здравствуй, {name}')
                 names_spoken.append(name)
 
-            cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (50, 220, 255), cv2.FILLED)
-            cv2.rectangle(frame, (left, top), (right, bottom), (100, 100, 100, 10), 2)
+            # cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (50, 220, 255), cv2.FILLED)
+            # cv2.rectangle(frame, (left, top), (right, bottom), (100, 100, 100, 10), 2)
             draw.text((left + 1, top - 65), name, font=font, fill=(0, 80, 255, 100))
             draw.text((left, top - 66), name, font=font, fill=(255, 255, 255, 10))
             frame = np.array(img_pil)
